@@ -3,12 +3,12 @@ import { Code2, FileText, Globe } from "lucide-react";
 const socialLinks = [
   {
     label: "GitHub",
-    href: "[YOUR_GITHUB_URL]",
+    href: "https://github.com/Aditya-Wadbudhe",
     icon: Code2,
   },
   {
     label: "LinkedIn",
-    href: "[YOUR_LINKEDIN_URL]",
+    href: "https://www.linkedin.com/in/adityawadbudhe/",
     icon: Globe,
   },
 ] as const;
