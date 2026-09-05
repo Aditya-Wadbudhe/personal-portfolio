@@ -1,57 +1,75 @@
 import {
-  Code2,
-  Database,
-  GitBranch,
-  Globe,
-  Mail,
-  Server,
-} from "lucide-react";
+  SiExpress,
+  SiGithub,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
+import { MdEmail } from "react-icons/md";
 
 const techStack = {
   Frontend: [
     {
       name: "Next.js",
       description: "React framework for production web applications",
-      icon: Globe,
+      icon: SiNextdotjs,
+      color: "#ffffff",
     },
     {
       name: "React",
       description: "Component-based user interfaces",
-      icon: Code2,
+      icon: SiReact,
+      color: "#61DAFB",
     },
     {
       name: "TypeScript",
       description: "Type-safe application development",
-      icon: Code2,
+      icon: SiTypescript,
+      color: "#3178C6",
     },
   ],
+
   Backend: [
     {
       name: "Node.js",
       description: "Server-side JavaScript runtime",
-      icon: Server,
+      icon: SiNodedotjs,
+      color: "#68A063",
+    },
+    {
+      name: "Express.js",
+      description: "Backend framework for Node.js applications",
+      icon: SiExpress,
+      color: "#ffffff",
     },
     {
       name: "Nodemailer",
       description: "Transactional email integration",
-      icon: Mail,
+      icon: MdEmail,
+      color: "#EA4335",
     },
     {
       name: "SMTP",
       description: "Email delivery infrastructure",
-      icon: Mail,
+      icon: MdEmail,
+      color: "#60A5FA",
     },
   ],
+
   "Deployment & Tools": [
     {
       name: "Vercel",
       description: "Application deployment and hosting",
-      icon: Globe,
+      icon: SiVercel,
+      color: "#ffffff",
     },
     {
       name: "GitHub",
       description: "Source control and project hosting",
-      icon: GitBranch,
+      icon: SiGithub,
+      color: "#ffffff",
     },
   ],
 } as const;
@@ -78,49 +96,53 @@ export function TechStack() {
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {Object.entries(techStack).map(([category, technologies]) => (
-            <div
-              key={category}
-              className="surface surface-hover p-6"
-            >
-              <h3 className="flex items-center gap-2 text-sm font-semibold">
-                <span className="icon-box">
-                  <Code2 size={16} aria-hidden="true" />
-                </span>
+          {Object.entries(techStack).map(
+            ([category, technologies]) => (
+              <div
+                key={category}
+                className="surface surface-hover p-6"
+              >
+                <h3 className="text-sm font-semibold">
+                  {category}
+                </h3>
 
-                {category}
-              </h3>
+                <ul className="mt-5 space-y-3">
+                  {technologies.map((technology) => {
+                    const Icon = technology.icon;
 
-              <ul className="mt-5 space-y-3">
-                {technologies.map((technology) => {
-                  const Icon = technology.icon;
+                    return (
+                      <li
+                        key={technology.name}
+                        className="rounded-lg border border-transparent p-3 transition-colors hover:border-[var(--border)] hover:bg-[var(--surface-elevated)]"
+                      >
+                        <div className="flex items-start gap-4">
+                          <span
+                            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)]"
+                            aria-hidden="true"
+                          >
+                            <Icon
+                              size={26}
+                              color={technology.color}
+                            />
+                          </span>
 
-                  return (
-                    <li
-                      key={technology.name}
-                      className="rounded-lg border border-transparent p-3 transition-colors hover:border-[var(--border)] hover:bg-[var(--surface-elevated)]"
-                    >
-                      <div className="flex gap-3">
-                        <span className="icon-box">
-                          <Icon size={16} aria-hidden="true" />
-                        </span>
+                          <div className="min-w-0">
+                            <p className="text-sm font-medium">
+                              {technology.name}
+                            </p>
 
-                        <div>
-                          <p className="text-sm font-medium">
-                            {technology.name}
-                          </p>
-
-                          <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
-                            {technology.description}
-                          </p>
+                            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                              {technology.description}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>

@@ -1,15 +1,18 @@
-import { Code2, FileText, Globe } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { MdPictureAsPdf } from "react-icons/md";
 
 const socialLinks = [
   {
     label: "GitHub",
     href: "https://github.com/Aditya-Wadbudhe",
-    icon: Code2,
+    icon: FaGithub,
+    color: "#ffffff",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/adityawadbudhe/",
-    icon: Globe,
+    icon: FaLinkedinIn,
+    color: "#0A66C2",
   },
 ] as const;
 
@@ -17,6 +20,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[var(--border-subtle)]">
       <div className="container flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+        {/* Identity */}
         <div>
           <a
             href="#top"
@@ -30,6 +34,7 @@ export function Footer() {
           </p>
         </div>
 
+        {/* Social links */}
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap items-center gap-5">
             {socialLinks.map((link) => {
@@ -43,13 +48,19 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="icon-link text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
                   >
-                    <Icon size={16} aria-hidden="true" />
+                    <Icon
+                      size={17}
+                      color={link.color}
+                      aria-hidden="true"
+                    />
+
                     {link.label}
                   </a>
                 </li>
               );
             })}
 
+            {/* Resume */}
             <li>
               <a
                 href="/resume.pdf"
@@ -57,7 +68,12 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="icon-link text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
-                <FileText size={16} aria-hidden="true" />
+                <MdPictureAsPdf
+                  size={19}
+                  color="#EF4444"
+                  aria-hidden="true"
+                />
+
                 Resume
               </a>
             </li>
@@ -65,6 +81,7 @@ export function Footer() {
         </nav>
       </div>
 
+      {/* Copyright */}
       <div className="container border-t border-[var(--border-subtle)] py-5">
         <p className="text-xs text-[var(--muted-foreground)]">
           © {new Date().getFullYear()} Aditya. All rights reserved.
